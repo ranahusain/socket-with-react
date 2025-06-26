@@ -1,17 +1,18 @@
-npm create vite@latest my-app -- --template react
-yarn
-yarn run dev
+1) npm create vite@latest my-app -- --template react
+2) yarn
+3) yarn run dev
 
-npm init -y
+4) npm init -y
 
-Open Two Terminals 
+# Open Two Terminals 
 
-one for server              one for client
+## one for server              one for client
 yarn add socket.io          yarn add socket.io-client
 
 
 create index.js in src
 
+```
 import { Server } from "socket.io";
 
 const io = new Server(3001);
@@ -23,10 +24,10 @@ io.on("connection", (socket) => {
     console.log("msg from client", data);
   });
 });
+```
 
-
-then go to app.jsx
-
+## then go to app.jsx
+```
 import { useState } from "react";
 import reactLogo from "./assets/react.svg";
 import viteLogo from "/vite.svg";
@@ -51,7 +52,7 @@ useEffect(() => {
 }, []);
 
 function App() { return <> </>}
-
+```
 
 by this the error will be of cors 
 Here i got the error of events name they are case sensitive
@@ -59,10 +60,12 @@ Here i got the error of events name they are case sensitive
 now check final file index.js
 now check final file app.jsx
 
+---
 
-How do we know if the server is running or not?
+
+## How do we know if the server is running or not?
 so we will do some changes 
-
+```
  import { createServer } from "http";
 const httpServer = createServer();
 const io = new Server(httpServer, {
@@ -75,18 +78,20 @@ httpServer.listen(4000, () => {
   console.log("server is running at port 4000");
 });
 
+```
+# NOTES:
 
+# In client Side:  socket.on
 
-NOTES:
-In client Side:  socket.on
+## inside the socket.on
 
-inside the socket.on
 	socket.on => to get all the messages from server
 	socket.emit => send message to the server
 
-In Server Side: io.on
+## In Server Side: io.on
 
-inside the io.on
+# inside the io.on
+
 	socket.on => to get all messages from client
 	socket.emit => send message to the client        
 
