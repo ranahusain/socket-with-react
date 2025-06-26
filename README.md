@@ -93,8 +93,9 @@ httpServer.listen(4000, () => {
 # inside the io.on
 
 	socket.on => to get all messages from client
-	socket.emit => send message to the client        
-
+	socket.emit => send message to the client    
+ ---
+# we use io.emit on server side to send to all connected devives for better understand see repo ChatApp-with-Socket.io
 
 
 
